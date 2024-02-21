@@ -1,6 +1,7 @@
 # onestar99.github.io blog project.
 
 ## 목표하는 블로그와 개발자
+- **vue.js**를 이용한 블로그 개발 
 - **IT 뉴스와 견해**를 정리하는 블로그
 - **개인 공부 내용**을 정리하는 블로그
 - 블로그 글을 올리며 **MarkUp 언어 숙달**
@@ -26,10 +27,6 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
 
 ### Github pages deploy
 ```
