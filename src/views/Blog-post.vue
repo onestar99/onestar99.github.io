@@ -60,11 +60,16 @@
   .main-content a:hover, .main-content a:focus {
     color: #7957d5; /* 호버 및 포커스 시 색상 변경 */
   }
-
   .main-content hr{
-    border-radius: 2px;
+    border-top: 1px dotted #bbb;
+    color: #7957d5;
+    width: 100%;
   }
 
+  .main-content img:hover {
+    transform: scale(1.01); /* 이미지를 약간 확대 */
+    filter: brightness(110%); /* 이미지가 빛나게 */
+  }
   .main-content table{
     border: 1px solid #fff;
     border-collapse: collapse;
@@ -72,7 +77,8 @@
     text-align: center;
     
   }
-  .main-content th { border: 1px solid #fff; }
+  .main-content th { border: 1px solid #fff;
+  font-size: 2cap; }
   .main-content td { border: 1px solid #fff; }
 
 
