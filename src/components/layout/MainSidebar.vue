@@ -44,6 +44,9 @@ export default {
 
 <style scoped>
 .main-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
   margin: 0;
   height: 100%;
   width: 350px;
@@ -53,6 +56,7 @@ export default {
   display: flex; /* Flexbox를 사용해서 내용을 중앙 정렬 */
   flex-direction: column; /* 내용을 세로로 정렬 */
   align-items: center; /* 가로 중앙 정렬 */
+  z-index: 1000;
 }
 
 .profile-image {

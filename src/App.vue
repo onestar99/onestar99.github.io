@@ -35,7 +35,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
-  text-align: center;
+  text-align: left;
   color: #ffffff;
   background-color: #2c3e50;
   width: 100%;
