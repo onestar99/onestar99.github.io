@@ -1,5 +1,6 @@
 <template>
   <div v-html="convertedMarkdown" class="main-content"></div>
+  <div class="bottom-bar"></div>
 </template>
   
 <script>
@@ -26,8 +27,8 @@
 <style scoped>
 .main-content {
   margin-left: 350px; /* 사이드바의 너비와 동일하게 설정 */
-  padding-left: 90px; /* 내용과 테두리 사이의 간격 */
-  padding-right: 90px; /* 내용과 테두리 사이의 간격 */
+  padding-left: 200px; /* 내용과 테두리 사이의 간격 */
+  padding-right: 200px; /* 내용과 테두리 사이의 간격 */
   padding-top: 30px; /* 내용과 테두리 사이의 간격 */
   overflow: auto; /* 내용이 넘칠 경우 스크롤 가능하도록 설정 */
   
@@ -46,6 +47,10 @@
 
 <style>
 
+.top-bar{
+  height: 100px;
+}
+
   .main-content p{
     color: beige;
   }
@@ -61,9 +66,11 @@
     color: #7957d5; /* 호버 및 포커스 시 색상 변경 */
   }
   .main-content hr{
-    border-top: 1px dotted #bbb;
+    border-top: 5px #bbb;
     color: #7957d5;
-    width: 100%;
+    text-align: left;
+    margin-left: 0;
+    width: 90%;
   }
 
   .main-content img:hover {
