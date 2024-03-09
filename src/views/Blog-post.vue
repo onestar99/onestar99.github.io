@@ -27,8 +27,8 @@
 <style scoped>
 .main-content {
   margin-left: 350px; /* 사이드바의 너비와 동일하게 설정 */
-  padding-left: 200px; /* 내용과 테두리 사이의 간격 */
-  padding-right: 200px; /* 내용과 테두리 사이의 간격 */
+  padding-left: 150px; /* 내용과 테두리 사이의 간격 */
+  padding-right: 600px; /* 내용과 테두리 사이의 간격 */
   padding-top: 30px; /* 내용과 테두리 사이의 간격 */
   overflow: auto; /* 내용이 넘칠 경우 스크롤 가능하도록 설정 */
   
@@ -47,12 +47,15 @@
 
 <style>
 
-.top-bar{
-  height: 100px;
-}
+  .top-bar{
+    height: 100px;
+  }
 
-  .main-content p{
+  .main-content p {
     color: beige;
+    border-bottom: 1px solid #eee; /* 하단에 선 추가 */
+    padding-top: 10px; /* 상단 선과 텍스트 사이의 간격 */
+    padding-bottom: 10px; /* 텍스트와 하단 선 사이의 간격 */
   }
 
   .main-content a{
