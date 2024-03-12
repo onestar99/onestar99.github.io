@@ -1,10 +1,14 @@
 <template>
   <div v-html="convertedMarkdown" class="main-content"></div>
   <div class="bottom-bar"></div>
+
 </template>
-  
+
 <script>
   import { marked } from 'marked';
+  import Prism from 'prismjs';
+  import 'prismjs/themes/prism-okaidia.css'; // Prism.js 기본 테마 스타일
+  // import 'prismjs/themes/prism-twilight.css'; // Prism.js 기본 테마 스타일
 
   export default {
     props: ['id'],
@@ -18,6 +22,9 @@
         .then(response => response.text())
         .then(text => {
           this.convertedMarkdown = marked.parse(text);
+          this.$nextTick(() => {
+            Prism.highlightAll(); // DOM에 변환된 컨텐츠가 추가된 후 하이라이트 적용
+          });
         });
     },
   };
@@ -87,8 +94,7 @@
     text-align: center;
     
   }
-  .main-content th { border: 1px solid #fff;
-  font-size: 2cap; }
+  .main-content th { border: 1px solid #fff; font-size: 2cap; }
   .main-content td { border: 1px solid #fff; }
 
 
