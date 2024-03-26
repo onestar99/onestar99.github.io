@@ -18,5 +18,9 @@
   {
     "id": "5",
     "title": "파이썬 스킬"
+  },
+  {
+    "id": "6",
+    "title": "[SpringBoot] JWT 토큰방식과 Session 방식에 관한 고민"
   }
 ]
