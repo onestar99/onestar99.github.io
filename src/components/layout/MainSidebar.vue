@@ -1,5 +1,8 @@
 <template>
-    <div class="main-sidebar">
+    <div class="main-sidebar" 
+    :class="{ active: isSidebarActive }" @touchstart="handleTouchStart" 
+    @touchmove="handleTouchMove" 
+    @touchend="handleTouchEnd">
       <img src="@/assets/images/profile.jpg" alt="프로필 이미지" class="profile-image">
       <h1>개발자 onestar99</h1>
       <div class="starwars-demo">
@@ -23,10 +26,30 @@
 <script>
 export default {
   name: 'MainSidebar',
+  data() {
+    return {
+      isSidebarActive: false,
+      touchStartX: 0,
+      touchEndX: 0,
+    };
+  },
   mounted() {
     this.animateText();
   },
   methods: {
+    handleTouchStart(event) {
+      this.touchStartX = event.touches[0].clientX;
+    },
+    handleTouchMove(event) {
+      this.touchEndX = event.touches[0].clientX;
+    },
+    handleTouchEnd() {
+      const threshold = 100; // 슬라이드 감지 임계값
+      if (this.touchStartX - this.touchEndX > threshold) {
+        this.isSidebarActive = false;
+      }
+    },
+
     animateText() {
       const phrases = ["개발자로서..", "내가", "정.", "점에", "서겠다."];
       let index = 0;
@@ -61,6 +84,7 @@ export default {
   flex-direction: column; /* 내용을 세로로 정렬 */
   align-items: center; /* 가로 중앙 정렬 */
   z-index: 1000;
+  transition: transform 0.3s ease-in-out;
 }
 
 .profile-image {
@@ -108,7 +132,16 @@ export default {
   }
 }
 
-
+@media (max-width: 767px) {
+  .main-sidebar {
+    width: 100%;
+    transform: translateX(-100%);
+  }
+  
+  .main-sidebar.active {
+    transform: translateX(0);
+  }
+}
 
 
 </style>

@@ -1,24 +1,38 @@
 <template>
   <div id="app">
-    <MainSidebar></MainSidebar>
+    <MainSidebar v-if="showSidebar"></MainSidebar>
     <div class="main-content">
-      <!-- <HomeMain></HomeMain> -->
       <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import MainSidebar from './components/layout/MainSidebar.vue'
-// import HomeMain from './views/Home-main.vue';
+import MainSidebar from './components/layout/MainSidebar.vue';
 
 export default {
   name: 'App',
   components: {
     MainSidebar,
-    // HomeMain
-  }
-}
+  },
+  data() {
+    return {
+      showSidebar: true,
+    };
+  },
+  mounted() {
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.showSidebar = window.innerWidth >= 768; // 768px 이상일 때만 사이드바 표시
+    },
+  },
+};
 </script>
 
 <style>

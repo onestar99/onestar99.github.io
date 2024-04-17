@@ -1,42 +1,42 @@
 [
   {
-    "id": "1",
-    "title": "첫 블로그 글을 게시하며...",
-    "category": "개발 일기"
-  },
-  {
-    "id": "2",
-    "title": "특성 소재 선택 가이드",
-    "category": "원신"
-  },
-  {
-    "id": "3",
-    "title": "'요리조리' 레시피 사이트의 백엔드를 맡아 진행하며 생겼던 치명적 문제들",
-    "category": "개발 일기"
-  },
-  {
-    "id": "4",
-    "title": "셀레니움 최신 버전에 대한 대응",
-    "category": "Selenium"
+    "id": "8",
+    "title": "[DataBase] 데이터베이스를 튜닝하는 방법들",
+    "category": "Database"
   },
   {
     "id": "5",
-    "title": "코딩 테스트 스킬",
+    "title": "[Python] 코딩 테스트 스킬",
     "category": "Python"
   },
   {
+    "id": "4",
+    "title": "[Selenium] 셀레니움 최신 버전에 대한 대응",
+    "category": "Selenium"
+  },
+  {
     "id": "6",
-    "title": "JWT 토큰방식과 Session 방식에 관한 고민",
+    "title": "[SpringBoot] JWT 토큰방식과 Session 방식에 관한 고민",
     "category": "SpringBoot"
   },
   {
     "id": "7",
-    "title": "공부 정리본",
+    "title": "[SpringBoot] 공부 정리본",
     "category": "SpringBoot"
   },
   {
-    "id": "8",
-    "title": "데이터베이스를 튜닝하는 방법들",
-    "category": "DataBase"
+    "id": "1",
+    "title": "[개발 일기] 첫 블로그 글을 게시하며...",
+    "category": "개발 일기"
+  },
+  {
+    "id": "3",
+    "title": "[개발 일기] '요리조리' 레시피 사이트의 백엔드를 맡아 진행하며 생겼던 치명적 문제들",
+    "category": "개발 일기"
+  },
+  {
+    "id": "2",
+    "title": "[원신] 특성 소재 선택 가이드",
+    "category": "원신"
   }
 ]
