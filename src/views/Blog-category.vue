@@ -48,4 +48,11 @@
   .blog-link:hover, .blog-link:focus {
     color: #7957d5; /* 호버 및 포커스 시 색상 변경 */
   }
+
+  @media (max-width: 767px) {
+  .blog-list {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
   </style>

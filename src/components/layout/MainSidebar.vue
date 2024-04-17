@@ -1,8 +1,6 @@
 <template>
-    <div class="main-sidebar" 
-    :class="{ active: isSidebarActive }" @touchstart="handleTouchStart" 
-    @touchmove="handleTouchMove" 
-    @touchend="handleTouchEnd">
+  <div class="main-sidebar" :class="{ 'sidebar-closed': !show }">
+    <div class="sidebar-content">
       <img src="@/assets/images/profile.jpg" alt="프로필 이미지" class="profile-image">
       <h1>개발자 onestar99</h1>
       <div class="starwars-demo">
@@ -21,51 +19,43 @@
         <p></p>
       </div>
     </div>
-  </template>
+    <div class="sidebar-toggle" @click="toggleSidebar">
+      <span v-if="show">&times;</span>
+      <span v-else>&#9776;</span>
+    </div>
+  </div>
+</template>
 
 <script>
 export default {
   name: 'MainSidebar',
-  data() {
-    return {
-      isSidebarActive: false,
-      touchStartX: 0,
-      touchEndX: 0,
-    };
+  props: {
+    show: {
+      type: Boolean,
+      required: true,
+    },
   },
   mounted() {
     this.animateText();
   },
   methods: {
-    handleTouchStart(event) {
-      this.touchStartX = event.touches[0].clientX;
+    toggleSidebar() {
+      this.$emit('toggle');
     },
-    handleTouchMove(event) {
-      this.touchEndX = event.touches[0].clientX;
-    },
-    handleTouchEnd() {
-      const threshold = 100; // 슬라이드 감지 임계값
-      if (this.touchStartX - this.touchEndX > threshold) {
-        this.isSidebarActive = false;
-      }
-    },
-
     animateText() {
       const phrases = ["개발자로서..", "내가", "정.", "점에", "서겠다."];
       let index = 0;
-      const target = this.$el.querySelector('.sidebar-slogan p'); // '.starwars-demo p' 대신 적절한 셀렉터 사용
-
+      const target = this.$el.querySelector('.sidebar-slogan p');
       const addText = () => {
         if (index < phrases.length) {
           target.innerHTML += (index > 0 ? " " : "") + phrases[index];
           index++;
-          setTimeout(addText, 2000); // 다음 텍스트 조각을 추가하기 전에 2초 대기
+          setTimeout(addText, 2000);
         }
       };
-
       addText();
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -78,20 +68,31 @@ export default {
   height: 100%;
   width: 350px;
   background-image: url('~@/assets/images/space-sidebar.jpg');
-  background-size: cover; /* 배경 이미지가 div를 꽉 채우도록 설정 */
-  background-position: center; /* 이미지가 중앙에 오도록 설정 */
-  display: flex; /* Flexbox를 사용해서 내용을 중앙 정렬 */
-  flex-direction: column; /* 내용을 세로로 정렬 */
-  align-items: center; /* 가로 중앙 정렬 */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   z-index: 1000;
   transition: transform 0.3s ease-in-out;
 }
 
+.sidebar-content {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+
 .profile-image {
   border-radius: 50%;
   width: 100px;
-  object-fit: cover; /* 이미지 비율 유지 */
-  border: 3px solid white; /* 이미지 주변에 흰색 테두리 추가 (선택사항) */
+  object-fit: cover;
+  border: 3px solid white;
   margin-top: 30px;
 }
 
@@ -108,11 +109,14 @@ export default {
   overflow: hidden;
   perspective: 300px;
   user-select: none;
+  max-height: 500px; /* 최대 높이 제한 */
 }
 
 .starwars-demo p {
   transform-origin: 50% 100%;
   animation: crawl 85s linear infinite;
+  max-width: 100%; /* 최대 너비를 100%로 제한 */
+  padding: 0 20px; /* 좌우 여백 추가 */
 }
 
 @keyframes crawl {
@@ -132,17 +136,50 @@ export default {
   }
 }
 
-@media (max-width: 767px) {
-  .main-sidebar {
-    width: 100%;
-    transform: translateX(-100%);
-  }
-  
-  .main-sidebar.active {
-    transform: translateX(0);
-  }
+.sidebar-toggle {
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  background-color: #f0f0f0;
+}
+
+.sidebar-toggle span {
+  font-size: 24px;
+  color: #333;
+}
+
+.sidebar-closed {
+  transform: translateX(-100%);
 }
 
 
+@media (max-width: 767px) {
+  .main-sidebar {
+    width: 100%;
+  }
+
+  .profile-image {
+    width: 80px;
+    margin-top: 20px;
+  }
+
+  .starwars-demo {
+    font-size: 100%;
+    height: auto;
+  }
+}
 </style>
-  

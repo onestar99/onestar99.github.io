@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <MainSidebar v-if="showSidebar"></MainSidebar>
+    <MainSidebar :show="showSidebar" @toggle="toggleSidebar"></MainSidebar>
     <div class="main-content">
       <router-view></router-view>
     </div>
@@ -20,23 +20,15 @@ export default {
       showSidebar: true,
     };
   },
-  mounted() {
-    this.handleResize();
-    window.addEventListener('resize', this.handleResize);
-  },
-  beforeUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-  },
   methods: {
-    handleResize() {
-      this.showSidebar = window.innerWidth >= 768; // 768px 이상일 때만 사이드바 표시
+    toggleSidebar() {
+      this.showSidebar = !this.showSidebar;
     },
   },
 };
 </script>
 
 <style>
-
 html, body {
   margin: 0;
   padding: 0;
@@ -55,11 +47,10 @@ html, body {
   width: 100%;
   height: 100%;
 }
+
 .main-content {
-  flex: 1; /* 나머지 공간을 모두 차지하도록 설정 */
+  flex: 1;
   display: flex;
-  flex-direction: column; /* 세로 방향 정렬 */
+  flex-direction: column;
 }
-
-
 </style>

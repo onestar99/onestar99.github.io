@@ -80,6 +80,11 @@ export default {
   width: 90%;
 }
 
+.main-content img {
+  max-width: 100%;
+  height: auto;
+}
+
 .main-content img:hover {
   transform: scale(1.01);
   filter: brightness(110%);
@@ -88,7 +93,7 @@ export default {
 .main-content table {
   border: 1px solid #fff;
   border-collapse: collapse;
-  width: 500px;
+  width: 100%;
   text-align: center;
 }
 
@@ -99,5 +104,11 @@ export default {
 
 .main-content td {
   border: 1px solid #fff;
+}
+
+@media (max-width: 768px) {
+  .main-content table {
+    font-size: 14px;
+  }
 }
 </style>

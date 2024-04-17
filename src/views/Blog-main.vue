@@ -51,4 +51,11 @@ export default {
 .blog-link:focus {
   color: #7957d5;
 }
+
+@media (max-width: 767px) {
+  .blog-list {
+    margin-left: 0;
+    padding: 20px;
+  }
+}
 </style>
