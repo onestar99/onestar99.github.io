@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeMain from '../views/Home-main.vue';
 import Blog from '../views/Blog-main.vue';
-import BlogPost from '../views/Blog-post.vue'; // 개별 마크다운 파일을 보여줄 컴포넌트
+import BlogCategory from '../views/Blog-category.vue';
+import BlogPost from '../views/Blog-post.vue';
 import News from '../views/News-main.vue';
 import Game from '../views/Game-main.vue';
+
 const routes = [
   {
     path: '/',
@@ -16,10 +18,16 @@ const routes = [
     component: Blog,
   },
   {
-    path: '/blog/:id', // 동적 세그먼트 사용
+    path: '/blog/:category',
+    name: 'BlogCategory',
+    component: BlogCategory,
+    props: true,
+  },
+  {
+    path: '/blog/:category/:id',
     name: 'BlogPost',
     component: BlogPost,
-    props: true, // 라우트 파라미터를 props로 전달
+    props: true,
   },
   {
     path: '/news',
@@ -31,7 +39,6 @@ const routes = [
     name: 'Game',
     component: Game,
   },
-  
 ];
 
 const router = createRouter({
