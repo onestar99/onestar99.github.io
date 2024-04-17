@@ -106,8 +106,36 @@ export default {
   border: 1px solid #fff;
 }
 
+.main-content pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  -webkit-overflow-scrolling: touch;
+  max-width: 80%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.main-content pre code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  display: inline-block;
+  max-width: 100%;
+}
+
 @media (max-width: 768px) {
   .main-content table {
+    font-size: 14px;
+  }
+
+
+  .main-content pre {
+    font-size: 14px;
+  }
+
+  .main-content code {
+    padding: 5px;
     font-size: 14px;
   }
 }
